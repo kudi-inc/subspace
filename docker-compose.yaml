@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  subspace:
+   image: subspace:test
+   container_name: subspace
+   volumes:
+    - /data:/data
+   restart: always
+   environment:
+    - SUBSPACE_HTTP_HOST=vpn.kudi.ng
+    - SUBSPACE_LETSENCRYPT=true
+    - SUBSPACE_HTTP_INSECURE=false
+    - SUBSPACE_NAMESERVER=169.254.169.254
+    - SUBSPACE_LISTENPORT=51820
+    - SUBSPACE_IPV4_POOL=10.71.240.0/20
+    - SUBSPACE_IPV4_GW=10.71.240.0
+    - SUBSPACE_IPV4_PREF=10.71.240.
+   cap_add:
+    - NET_ADMIN
+   network_mode: "host"
